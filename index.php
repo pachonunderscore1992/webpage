@@ -21,6 +21,7 @@
     <div id="topcon-inner">
       <h2>Bienvenidos a KPOP para el Mundo</h2>
       <p>Un sitio web para compartir noticias e informacion sobre KPOP</p>
+      
       <p> </p>
     </div>
   </div>
