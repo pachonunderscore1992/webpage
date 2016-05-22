@@ -36,9 +36,9 @@ body {
 
 /** layout **/
 #wrapper {
-	width: 678px;
-	min-height: 750px;
-	_height: 750px;
+	width: 800px;
+	min-height: 600px;
+	_height: 600px;
 	background: url(images/header.jpg) no-repeat;
   position: relative;
 }
@@ -62,7 +62,7 @@ h1 em {
 #nav {
   position: absolute;
   top: 0px;
-  left: 335px;
+  left: 400px;
   width: 500px;
 }
 #nav li {
@@ -92,7 +92,7 @@ h1 em {
   width: 427px;
   position: absolute;
   top: 105px;
-  left: 338px;
+  left: 380px;
   color: #fff;
 }
 #topcon-inner {
