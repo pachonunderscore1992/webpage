@@ -1,11 +1,16 @@
 <!doctype html>
-<html>
+<html><!-- InstanceBegin template="/Templates/pagina normal.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta charset="utf-8">
+<!-- InstanceBeginEditable name="doctitle" -->
 <title>Documento sin título</title>
 <style type="text/css">
 </style>
+<!-- InstanceEndEditable -->
 <link href="CSS/estilos.css" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 <script type="text/javascript">
 function MM_swapImgRestore() { //v3.0
   var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
@@ -29,6 +34,8 @@ function MM_swapImage() { //v3.0
    if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
 }
 </script>
+<!-- InstanceBeginEditable name="head" -->
+<!-- InstanceEndEditable -->
 </head>
 
 <body onLoad="MM_preloadImages('Imagenes/flashimagenes/header5.jpg','Imagenes/flashimagenes/header6.jpg','Imagenes/flashimagenes/header7.jpg','Imagenes/flashimagenes/header8.jpg')">
@@ -47,10 +54,11 @@ function MM_swapImage() { //v3.0
     
     <div class="barraLateral">
       <div class="barraLateraltop"></div>
-      <div class="barraLateralMed">
+      <div class="barraLateralMed"><!-- InstanceBeginEditable name="contenidoLateral" -->
         <div class="contenidoLateral" id="contenidoLateral">
-          <p class="rotuloLateral">NOTICIAS</p>
+          <p class="rotuloLateral">RANKING</p>
         </div>
+      <!-- InstanceEndEditable -->
         <ul>
           <li><a href="index.php">Noticias</a></li>
           <li><a href="ranking.php">Ranking</a></li>
@@ -59,14 +67,14 @@ function MM_swapImage() { //v3.0
       </div>
       <div class="barraLateralBot"></div>
     </div>
+    <!-- InstanceBeginEditable name="Contenidos" -->
     <div class="cotenidos">
-      <h1 class="h1">Noticias</h1>
     </div>
-  </article>
+    <!-- InstanceEndEditable --><!-- end .content --></article>
   <footer>
     <p>pie de pagina</p>
 
   </footer>
-</div>
+<!-- end .container --></div>
 </body>
-</html>
+<!-- InstanceEnd --></html>
