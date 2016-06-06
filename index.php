@@ -14,7 +14,6 @@
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="bower_components/bootstrap-calendar/css/calendar.css" rel="stylesheet">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <!-- Custom CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
 
@@ -29,14 +28,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="bower_components/bootstrap-calendar/js/calendar.js"></script>
-    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
-    <script type="text/javascript" src="bower_components/moment/moment.js"></script>
-
-    
 
 </head>
 
@@ -124,7 +115,7 @@
                                 <i class="fa fa-newspaper-o fa-3x"></i>
                             </div>
                         </div>
-                        <img src="Imagenes/flashimagenes/header2.jpg" class="img-responsive" alt="" alt="" width="900" height="600">
+                        <img src="Imagenes/flashimagenes/header2.jpg" class="img-responsive" alt="" width="900" height="600">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -134,7 +125,7 @@
                                 <i class="fa fa-newspaper-o fa-3x"></i>
                             </div>
                         </div>
-                        <img src="Imagenes/flashimagenes/header3.jpg" class="img-responsive" alt="" alt="" width="900" height="600">
+                        <img src="Imagenes/flashimagenes/header3.jpg" class="img-responsive" alt="" width="900" height="600">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -144,7 +135,7 @@
                                 <i class="fa fa-newspaper-o fa-3x"></i>
                             </div>
                         </div>
-                        <img src="Imagenes/flashimagenes/header4.jpg" class="img-responsive" alt="" alt="" width="900" height="600">
+                        <img src="Imagenes/flashimagenes/header4.jpg" class="img-responsive" alt="" width="900" height="600">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -154,7 +145,7 @@
                                 <i class="fa fa-newspaper-o fa-3x"></i>
                             </div>
                         </div>
-                        <img src="Imagenes/flashimagenes/header5.jpg" class="img-responsive" alt="" alt="" width="900" height="600">
+                        <img src="Imagenes/flashimagenes/header5.jpg" class="img-responsive" alt="" width="900" height="600">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -164,7 +155,7 @@
                                 <i class="fa fa-newspaper-o fa-3x"></i>
                             </div>
                         </div>
-                        <img src="Imagenes/flashimagenes/header6.jpg" class="img-responsive" alt="" alt="" width="900" height="600">
+                        <img src="Imagenes/flashimagenes/header6.jpg" class="img-responsive" alt="" width="900" height="600">
                     </a>
                 </div>
             </div>
@@ -197,7 +188,7 @@
                 </div>
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <a href="#" class="btn btn-lg btn-outline">
-                        <i class="fa fa-thumbs-o-up"></i> VOTA POR TU ARTISTA FAVORITO
+                        <i class="fa fa-thumbs-o-up"></i> VOTA POR TU ARTISTA
                     </a>
                 </div>
             </div>
@@ -214,15 +205,8 @@
                 </div>
             </div>
             <div id="calendario"></div>
-            <script type="text/javascript">
-                var calendar = $("#calendario").calendar({
-                    tmpl_path: "bower_components/bootstrap-calendar/tmpls/",
-                    events_source: function () { return []; }
-                });
-            </script>
         </div>
     </section>
-
 
     <!-- Contact Section -->
     <section id="contact">
@@ -259,13 +243,13 @@
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
-                        <!-- <div class="row control-group">
+                        <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Message</label>
-                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <label>Repita Contraseña</label>
+                                <input type="password" class="form-control" placeholder="Repita Contraseña" id="phone" required data-validation-required-message="Ingrese su contraseña.">
                                 <p class="help-block text-danger"></p>
                             </div>
-                        </div> -->
+                        </div>
                         <br>
                         <div id="success"></div>
                         <div class="row">
@@ -574,6 +558,17 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
+
+    <script type="text/javascript" src="bower_components/bootstrap-calendar/js/calendar.js"></script>
+    <script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
+    <script type="text/javascript" src="bower_components/moment/moment.js"></script>
+
+    <script type="text/javascript">
+        var calendar = $("#calendario").calendar({
+            tmpl_path: "bower_components/bootstrap-calendar/tmpls/",
+            events_source: function () { return []; }
+        });
+    </script>
 
 </body>
 
