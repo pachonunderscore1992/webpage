@@ -2,10 +2,17 @@
   $servername = "localhost"; $username = "root"; $password = "123456"; $database_kpop = "kpopdb";
   $kpop = mysql_connect($servername, $username, $password);
   mysql_select_db($database_kpop, $kpop);
+  
   $query_ranking = "SELECT tmp.puesto,c.nom_cancion,c.autor FROM cancion c,(select id_ranking,puesto from ranking) tmp where c.id_ranking =tmp.id_ranking order by puesto";
   $ranking = mysql_query($query_ranking, $kpop) or die(mysql_error());
   $row_ranking = mysql_fetch_assoc($ranking);
   $totalRows_ranking = mysql_num_rows($ranking);
+
+  $query_noticias = "SELECT fotografia, fecha, descripcion FROM publicidad ORDER BY fecha desc";
+  $noticias = mysql_query($query_noticias, $kpop) or die(mysql_error());
+  $row_noticias = mysql_fetch_assoc($noticias);
+  $totalRows_noticias = mysql_num_rows($noticias);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,66 +114,21 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-newspaper-o fa-3x"></i>
+                <?php $i = 1; do { ?>
+                    <div class="col-sm-4 portfolio-item">
+                        <?php echo $i; ?>
+                        <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-newspaper-o fa-3x"></i>
+                                </div>
                             </div>
-                        </div>
-                        <img src="Imagenes/flashimagenes/header1.jpg" class="img-responsive" alt="" width="900" height="600">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-newspaper-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="Imagenes/flashimagenes/header2.jpg" class="img-responsive" alt="" width="900" height="600">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-newspaper-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="Imagenes/flashimagenes/header3.jpg" class="img-responsive" alt="" width="900" height="600">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-newspaper-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="Imagenes/flashimagenes/header4.jpg" class="img-responsive" alt="" width="900" height="600">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-newspaper-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="Imagenes/flashimagenes/header5.jpg" class="img-responsive" alt="" width="900" height="600">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-newspaper-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="Imagenes/flashimagenes/header6.jpg" class="img-responsive" alt="" width="900" height="600">
-                    </a>
-                </div>
+                            <img src="Imagenes/flashimagenes/header<?php echo $i; $i++; ?>.jpg" class="img-responsive" alt="" width="900" height="600">
+                        </a>
+                        <p><?php echo $row_noticias['descripcion']; ?></p>
+                        <p><?php echo $row_noticias['fecha']; ?></p>
+                    </div>
+                <?php } while ($row_noticias = mysql_fetch_assoc($noticias)); ?>
             </div>
         </div>
     </section>
