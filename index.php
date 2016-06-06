@@ -116,19 +116,20 @@
             <div class="row">
                 <?php $i = 1; do { ?>
                     <div class="col-sm-4 portfolio-item">
-                        <?php echo $i; ?>
-                        <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                        <a href="#portfolioModal<?php echo $i; ?>" class="portfolio-link" data-toggle="modal">
                             <div class="caption">
                                 <div class="caption-content">
                                     <i class="fa fa-newspaper-o fa-3x"></i>
                                 </div>
                             </div>
-                            <img src="Imagenes/flashimagenes/header<?php echo $i; $i++; ?>.jpg" class="img-responsive" alt="" width="900" height="600">
+                            <img src="<?php echo $row_noticias['fotografia']; ?>" class="img-responsive" alt="" width="900" height="600">
                         </a>
                         <p><?php echo $row_noticias['descripcion']; ?></p>
                         <p><?php echo $row_noticias['fecha']; ?></p>
                     </div>
-                <?php } while ($row_noticias = mysql_fetch_assoc($noticias)); ?>
+                <?php 
+                    $i++ ; 
+                } while ($row_noticias = mysql_fetch_assoc($noticias)); ?>
             </div>
         </div>
     </section>
@@ -285,7 +286,55 @@
     </div>
 
     <!-- Portfolio Modals -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <?php
+        $query_noticias = "SELECT fotografia, fecha, descripcion, noticia FROM publicidad ORDER BY fecha desc";
+        $noticias = mysql_query($query_noticias, $kpop) or die(mysql_error());
+        $row_noticias = mysql_fetch_assoc($noticias);
+        $i = 1;
+        do {
+            ?>
+            <div class="portfolio-modal modal fade" id="portfolioModal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="modal-body">
+                                    <h2><?php echo $row_noticias['descripcion']; ?></h2>
+                                    <hr class="star-primary">
+                                    <img src="<?php echo $row_noticias['fotografia']; ?>" class="img-responsive img-centered" alt="" width="900" height="600">
+                                    <p><?php echo $row_noticias['noticia']; ?></p>
+                                    <ul class="list-inline item-details">
+                                        <li>Usuario:
+                                            <strong><?php 
+                                                echo $row_noticias['id_usuario'];
+                                             ?></strong>
+                                        </li>
+                                        <li>Fecha:
+                                            <strong><?php echo $row_noticias['fecha']; ?></strong>
+                                        </li>
+                                    </ul>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    <?php
+            $i++;
+        } while ($row_noticias = mysql_fetch_assoc($noticias)); 
+    ?>
+
+
+    <!-- <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
@@ -506,7 +555,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
