@@ -1,3 +1,12 @@
+<?php
+  $servername = "localhost"; $username = "root"; $password = "123456"; $database_kpop = "kpopdb";
+  $kpop = mysql_connect($servername, $username, $password);
+  mysql_select_db($database_kpop, $kpop);
+  $query_ranking = "SELECT tmp.puesto,c.nom_cancion,c.autor FROM cancion c,(select id_ranking,puesto from ranking) tmp where c.id_ranking =tmp.id_ranking order by puesto";
+  $ranking = mysql_query($query_ranking, $kpop) or die(mysql_error());
+  $row_ranking = mysql_fetch_assoc($ranking);
+  $totalRows_ranking = mysql_num_rows($ranking);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -173,18 +182,14 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>1 - 4 CHANCE  SS501</p>
-                    <p>2 - LUCIFER  SHINNE</p>
-                    <p>3 - GARA GARA GO!  HARA</p>
-                    <p>4 - PARADISE  EXO</p>
-                    <p>5 - ROLY POLY  T-ARA</p>
+                    <?php for ($i = 0 ; $i < 5 ; $i++) { ?>
+                    <p><?php echo $row_ranking['puesto']." - "; ?>  <?php echo $row_ranking['nom_cancion']." - "; ?>  <?php echo $row_ranking['autor']; ?></p>
+                    <?php $row_ranking = mysql_fetch_assoc($ranking); } ?>
                 </div>
                 <div class="col-lg-4">
-                    <p>6 - MR SIMPLE  SUPER JUNIOR</p>
-                    <p>7 - JANUS  BOYFRIEND</p>
-                    <p>8 - CRAZY  TEEN TOP</p>
-                    <p>9 - COODBYE BABY  JUNIOR JUN</p>
-                    <p>10 - LOVE  MIS-A</p>
+                    <?php for ($i = 0 ; $i < 5 ; $i++) { ?>
+                    <p><?php echo $row_ranking['puesto']." - "; ?>  <?php echo $row_ranking['nom_cancion']." - "; ?>  <?php echo $row_ranking['autor']; ?></p>
+                    <?php $row_ranking = mysql_fetch_assoc($ranking); } ?>
                 </div>
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <a href="#" class="btn btn-lg btn-outline">
@@ -562,11 +567,23 @@
     <script type="text/javascript" src="bower_components/bootstrap-calendar/js/calendar.js"></script>
     <script type="text/javascript" src="bower_components/underscore/underscore.js"></script>
     <script type="text/javascript" src="bower_components/moment/moment.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap-calendar/js/language/es-ES.js"></script>
 
     <script type="text/javascript">
         var calendar = $("#calendario").calendar({
+            language: 'es-ES',
             tmpl_path: "bower_components/bootstrap-calendar/tmpls/",
-            events_source: function () { return []; }
+            events_source: function () { return [
+                    {
+                        "id": 293,
+                        "title": "Event 1",
+                        "url": "http://example.com",
+                        "class": "event-important",
+                        "start": 1465209102155, // Milliseconds
+                        "end": 1465209102155 // Milliseconds
+                    }
+                ]; 
+            }
         });
     </script>
 
