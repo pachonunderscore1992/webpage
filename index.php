@@ -586,13 +586,40 @@
             tmpl_path: "bower_components/bootstrap-calendar/tmpls/",
             events_source: function () { return [
                     {
-                        "id": 293,
-                        "title": "Event 1",
-                        "url": "http://example.com",
+                        "id": 1,
+                        "title": "Cumpleaños de Woosang",
                         "class": "event-important",
-                        "start": 1465209102155, // Milliseconds
-                        "end": 1465209102155 // Milliseconds
-                    }
+                        "start": 1465209082155,
+                        "end": 1465239084437
+                    },
+                    {
+                        "id": 2,
+                        "title": "Cumpleaños de Yoochun",
+                        "class": "event-important",
+                        "start": 1465209112155,
+                        "end": 1465239124437
+                    },
+                    {
+                        "id": 3,
+                        "title": "Cumpleaños de AJ",
+                        "class": "event-important",
+                        "start": 1465108112155,
+                        "end":   1465238124437
+                    },
+                    {
+                        "id": 4,
+                        "title": "Cumpleaños de Kim Hyunjoong",
+                        "class": "event-important",
+                        "start": 1465708112155,
+                        "end":   1465808124437
+                    },
+                    {
+                        "id": 5,
+                        "title": "Cumpleaños de Dongwoon",
+                        "class": "event-important",
+                        "start": 1465558112155,
+                        "end":   1465658124437
+                    },
                 ]; 
             }
         });
