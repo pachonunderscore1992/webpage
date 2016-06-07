@@ -122,7 +122,7 @@ $(function() {
                     $('#regsuccess').html("<div class='alert alert-danger'>");
                     $('#regsuccess > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $('#regsuccess > .alert-danger').append("<strong>No se pudo crear el usuario");
+                    $('#regsuccess > .alert-danger').append("<strong>Usuario ya existe");
                     $('#regsuccess > .alert-danger').append('</div>');
                     //clear all fields
                     $('#registerForm').trigger("reset");

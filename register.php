@@ -15,7 +15,7 @@ $row_user = mysql_fetch_assoc($result_query_user);
 $find = false;
 $count = 0;
 do {
-   if($row_user == $user) {
+   if($row_user['nombre_usuario'] == $user) {
       $find = true;
    }
    $count++;
