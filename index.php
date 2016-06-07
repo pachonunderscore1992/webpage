@@ -78,6 +78,9 @@
                     <li class="page-scroll">
                         <a href="#calendar">Calendario</a>
                     </li>
+                    <li class="page-scroll" id="registrarse">
+                        <a href="#register" data-toggle="modal">Registrarse</a>
+                    </li>
                     <li class="page-scroll">
                         <a href="#contact" data-toggle="modal" id="iniciarSesion">Iniciar<br>Sesion</a>
                         <a href="#" class="hide" id="cerrarSesion" onclick="cerrarSesion()">Cerrar<br>Sesion</a>
@@ -204,13 +207,6 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
-                            <!-- <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Correo Electronico</label>
-                                    <input type="email" class="form-control" placeholder="Correo Electronico" id="email" required data-validation-required-message="Ingrese su correo electronico.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div> -->
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>Contraseña</label>
@@ -218,18 +214,57 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
-                            <!-- <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Repita Contraseña</label>
-                                    <input type="password" class="form-control" placeholder="Repita Contraseña" id="phone" required data-validation-required-message="Ingrese su contraseña.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <br> -->
                             <div id="success"></div>
                             <div class="row">
                                 <div class="form-group col-xs-12">
                                     <button type="submit" class="btn btn-success btn-lg">Iniciar Sesion</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Section -->
+
+    <div class="portfolio-modal modal fade" id="register" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div id="regFormClose" class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>Registrarse</h2>
+                        <hr class="star-primary">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <form name="sentMessage" id="registerForm" novalidate>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>Usuario</label>
+                                    <input type="text" class="form-control" placeholder="Usuario" id="reguser" required data-validation-required-message="Ingrese su usuario.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>Contraseña</label>
+                                    <input type="password" class="form-control" placeholder="Contraseña" id="regpassword" required data-validation-required-message="Ingrese su contraseña.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div id="regsuccess"></div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <button type="submit" class="btn btn-success btn-lg">Crear Usuario</button>
                                 </div>
                             </div>
                         </form>
