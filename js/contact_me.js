@@ -11,23 +11,19 @@ $(function() {
             event.preventDefault();
             
             // get values from FORM
-            var name = $("input#name").val();
-            var email = $("input#email").val();
-            var phone = $("input#phone").val();
-            var message = $("textarea#message").val();
-            var firstName = name; // For Success/Failure Message
+            var user = $("input#user").val();
+            var password = $("input#password").val();
+            var firstName = user; // For Success/Failure Message
             // Check for white space in name for Success/Fail message
             if (firstName.indexOf(' ') >= 0) {
-                firstName = name.split(' ').slice(0, -1).join(' ');
+                firstName = user.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "././mail/contact_me.php",
+                url: "././login.php",
                 type: "POST",
                 data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
+                    user: user,
+                    password: password
                 },
                 cache: false,
                 success: function() {
@@ -37,19 +33,24 @@ $(function() {
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
                     $('#success > .alert-success')
-                        .append("<strong>Your message has been sent. </strong>");
+                        .append("<strong>Sesion Iniciada. </strong>");
                     $('#success > .alert-success')
                         .append('</div>');
-
+                    localStorage.setItem('user', user);
                     //clear all fields
                     $('#contactForm').trigger("reset");
+
+                    $('#contactFormClose').click();
+                    $('#iniciarSesion').addClass("hide");
+                    $('#cerrarSesion').removeClass("hide");
                 },
                 error: function() {
+                    console.log(':(');
                     // Fail message
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
+                    $('#success > .alert-danger').append("<strong>Usuario no registrado");
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
                     $('#contactForm').trigger("reset");
