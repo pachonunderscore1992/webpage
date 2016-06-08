@@ -21,12 +21,17 @@ $(function() {
             $.ajax({
                 url: "././login.php",
                 type: "POST",
+                dataType: "json",
                 data: {
                     user: user,
                     password: password
                 },
                 cache: false,
-                success: function() {
+                success: function(data) {
+                    console.log('data', data);
+                    localStorage.setItem('userId', data['id_usuario']);
+                    localStorage.setItem('user', data['nombre_usuario']);
+                    
                     // Enable button & show success message
                     $("#btnSubmit").attr("disabled", false);
                     $('#success').html("<div class='alert alert-success'>");
@@ -36,7 +41,6 @@ $(function() {
                         .append("<strong>Sesion Iniciada. </strong>");
                     $('#success > .alert-success')
                         .append('</div>');
-                    localStorage.setItem('user', user);
                     //clear all fields
                     $('#contactForm').trigger("reset");
                     setTimeout(function() {
@@ -143,4 +147,69 @@ $(function() {
 // When clicking on Full hide fail/success boxes
 $('#name').focus(function() {
     $('#success').html('');
+});
+
+
+$(function() {
+
+    $("#nuevaNoticiaForm input,#nuevaNoticiaForm textarea").jqBootstrapValidation({
+        preventSubmit: true,
+        submitError: function($form, event, errors) {
+            // additional error messages or events
+        },
+        submitSuccess: function($form, event) {
+            // Prevent spam click and default submit behaviour
+            $("#btnSubmit").attr("disabled", true);
+            event.preventDefault();
+            
+            // get values from FORM
+            var titulo = $("input#titulo").val();
+            var noticia = $("textarea#noticia").val();
+            $.ajax({
+                url: "././nuevanoticia.php",
+                type: "POST",
+                data: {
+                    id_usuario: localStorage.getItem('userId'),
+                    titulo: titulo,
+                    noticia: noticia
+                },
+                cache: false,
+                success: function() {
+                    // Enable button & show success message
+                    $("#btnSubmit").attr("disabled", false);
+                    $('#nuevasuccess').html("<div class='alert alert-success'>");
+                    $('#nuevasuccess > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                        .append("</button>");
+                    $('#nuevasuccess > .alert-success')
+                        .append("<strong>Noticia Creada. </strong>");
+                    $('#nuevasuccess > .alert-success')
+                        .append('</div>');
+                    //clear all fields
+                    $('#nuevaNoticiaForm').trigger("reset");
+                    setTimeout(function() {
+                        $('#nuevaNoticiaFormClose').click();
+                    }, 1000);
+                },
+                error: function() {
+                    console.log(':(');
+                    // Fail message
+                    $('#nuevasuccess').html("<div class='alert alert-danger'>");
+                    $('#nuevasuccess > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                        .append("</button>");
+                    $('#nuevasuccess > .alert-danger').append("<strong>La noticia no pudo ser creada");
+                    $('#nuevasuccess > .alert-danger').append('</div>');
+                    //clear all fields
+                    $('#nuevaNoticiaForm').trigger("reset");
+                },
+            })
+        },
+        filter: function() {
+            return $(this).is(":visible");
+        },
+    });
+
+    $("a[data-toggle=\"tab\"]").click(function(e) {
+        e.preventDefault();
+        $(this).tab("show");
+    });
 });

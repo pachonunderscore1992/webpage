@@ -135,6 +135,13 @@
                     $i++ ; 
                 } while ($row_noticias = mysql_fetch_assoc($noticias)); ?>
             </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="#nuevaNoticia" data-toggle="modal" class="btn btn-lg" style="background-color: #2c3e50;">
+                        <i class="fa fa-newspaper-o"></i> AGREGAR UNA NOTICIA
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -265,6 +272,53 @@
                             <div class="row">
                                 <div class="form-group col-xs-12">
                                     <button type="submit" class="btn btn-success btn-lg">Crear Usuario</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NuevaNoticia Section -->
+
+    <div class="portfolio-modal modal fade" id="nuevaNoticia" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div id="nuevaNoticiaFormClose" class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>NUEVA NOTICIA</h2>
+                        <hr class="star-primary">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <form name="sentMessage" id="nuevaNoticiaForm" novalidate>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>Titulo</label>
+                                    <input type="text" class="form-control" placeholder="Titulo" id="titulo" required data-validation-required-message="Ingrese un titulo.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>Noticia</label>
+                                    <textarea rows="5" class="form-control" placeholder="Noticia" id="noticia" required data-validation-required-message="Ingrese la noticia"></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div id="nuevasuccess"></div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <button type="submit" class="btn btn-success btn-lg">Crear Noticia</button>
                                 </div>
                             </div>
                         </form>

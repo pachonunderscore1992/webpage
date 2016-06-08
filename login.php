@@ -11,10 +11,12 @@ $query_user = "SELECT * FROM usuario WHERE nombre_usuario = '".$user."' AND pass
 
 $result_query_user = mysql_query($query_user, $kpop) or die(mysql_error());
 
+$user_row = mysql_fetch_assoc($result_query_user);
+
 $total = mysql_num_rows($result_query_user);
 
 if($total != 0) {
-   return true;
+   echo json_encode($user_row);
 } else {
    http_response_code(404);
    return false;
