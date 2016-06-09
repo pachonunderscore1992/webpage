@@ -130,12 +130,12 @@
                 <?php $i = 1; do { ?>
                     <div class="col-sm-4 portfolio-item">
                         <a href="#artistaModal<?php echo $i; ?>" class="portfolio-link" data-toggle="modal">
-                            <div class="caption">
+                            <!-- <div class="caption">
                                 <div class="caption-content">
                                     <i class="fa fa-newspaper-o fa-3x"></i>
                                 </div>
-                            </div>
-                            <img src="<?php #echo $row_artistas['fotografia']; ?>" class="img-responsive" alt="" width="900" height="600">
+                            </div> -->
+                            <img src="<?php echo $row_artistas['fotografia']; ?>" class="img-responsive" alt="" width="900" height="600">
                         </a>
                         <p><?php echo $row_artistas['nombre']; ?></p>
                         <p><?php #echo $row_artistas['fecha']; ?></p>
@@ -393,21 +393,21 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <form name="sentMessage" id="nuevoArtistaForm" novalidate>
+                        <form action="nuevoartista.php" method="post" enctype="multipart/form-data">
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>Nombre</label>
-                                    <input type="text" class="form-control" placeholder="Nombre" id="nombreArtista" required data-validation-required-message="Ingrese el nombre.">
+                                    <input type="text" class="form-control" placeholder="Nombre" name="nombre_artista" id="nombre_artista" required data-validation-required-message="Ingrese el nombre.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
-                            <!-- <div class="row control-group">
+                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label></label>
-                                    <textarea rows="5" class="form-control" placeholder="Noticia" id="noticia" required data-validation-required-message="Ingrese la noticia"></textarea>
+                                    <input type="file" id="foto" name="foto">
                                     <p class="help-block text-danger"></p>
                                 </div>
-                            </div>-->
+                            </div>
                             <div id="nuevoArtistaSuccess"></div>
                             <div class="row">
                                 <div class="form-group col-xs-12">
@@ -547,7 +547,7 @@
                                 <div class="modal-body">
                                     <h2><?php echo $row_artistas['nombre']; ?></h2>
                                     <hr class="star-primary">
-                                    <img src="<?php #echo $row_artistas['fotografia']; ?>" class="img-responsive img-centered" alt="" width="900" height="600">
+                                    <img src="<?php echo $row_artistas['fotografia']; ?>" class="img-responsive img-centered" alt="" width="900" height="600">
                                     <p><?php #echo $row_artistas['noticia']; ?></p>
                                     <ul class="list-inline item-details">
                                         <li>Usuario:

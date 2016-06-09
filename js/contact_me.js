@@ -229,14 +229,18 @@ $(function() {
             event.preventDefault();
             
             // get values from FORM
-            var nombre_artista = $("input#nombreArtista").val();
+            var nombre_artista = $("input#nombre_artista").val();
+            var foto = $("input#foto")[0].files[0];
             $.ajax({
                 url: "././nuevoartista.php",
                 type: "POST",
                 data: {
-                    nombre_artista: nombre_artista
+                    nombre_artista: nombre_artista,
+                    foto: foto
                 },
                 cache: false,
+                contentType: false,
+                processData: false,
                 success: function() {
                     // Enable button & show success message
                     $("#btnSubmit").attr("disabled", false);
