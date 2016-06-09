@@ -21,7 +21,7 @@ $imageerror = $_FILES['foto']['error'];
 $imagetemp = $_FILES['foto']['tmp_name'];
 
 //The path you wish to upload the image to
-$image_path = $_SERVER['DOCUMENT_ROOT'] . '/fotos/' . $imagename;
+$image_path = $_SERVER['DOCUMENT_ROOT'] . '/Imagenes/flashimagenes/' . $imagename;
 if(is_uploaded_file($imagetemp)) {
    if(move_uploaded_file($imagetemp, $image_path)) {
       echo "Sussecfully uploaded your image.";
