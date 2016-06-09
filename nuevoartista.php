@@ -33,7 +33,7 @@ else {
   echo "Failed to upload your image.";
 }
 
-$query = "INSERT INTO artista(id_artista, id_grupo, nombre, fotografia) VALUES('".$id_artista."', 'g1', '".$nombre_artista."', 'fotos/".$imagename."');";
+$query = "INSERT INTO artista(id_artista, id_grupo, nombre, fotografia) VALUES('".$id_artista."', 'g1', '".$nombre_artista."', 'Imagenes/flashimagenes/".$imagename."');";
 
 $result_artista = mysql_query($query, $kpop) or die(mysql_error());
 
