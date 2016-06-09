@@ -21,7 +21,7 @@ $imageerror = $_FILES['foto']['error'];
 $imagetemp = $_FILES['foto']['tmp_name'];
 
 //The path you wish to upload the image to
-$image_path = $_SERVER['DOCUMENT_ROOT'] . '/Imagenes/flashimagenes/' . $imagename;
+$image_path = $_SERVER['DOCUMENT_ROOT'] . '/fotos/' . $imagename;
 if(is_uploaded_file($imagetemp)) {
    if(move_uploaded_file($imagetemp, $image_path)) {
       echo "Sussecfully uploaded your image.";
@@ -33,7 +33,7 @@ else {
   echo "Failed to upload your image.";
 }
 
-$query = "INSERT INTO artista(id_artista, id_grupo, nombre, fotografia) VALUES('".$id_artista."', 'g1', '".$nombre_artista."', 'Imagenes/flashimagenes/".$imagename."');";
+$query = "INSERT INTO artista(id_artista, id_grupo, nombre, fotografia) VALUES('".$id_artista."', 'g1', '".$nombre_artista."', 'fotos/".$imagename."');";
 
 $result_artista = mysql_query($query, $kpop) or die(mysql_error());
 
