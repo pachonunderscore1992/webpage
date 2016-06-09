@@ -13,6 +13,11 @@
   $row_noticias = mysql_fetch_assoc($noticias);
   $totalRows_noticias = mysql_num_rows($noticias);
 
+  $query_artistas = "SELECT * FROM artista";
+  $artistas = mysql_query($query_artistas, $kpop) or die(mysql_error());
+  $row_artistas = mysql_fetch_assoc($artistas);
+  $totalRows_artistas = mysql_num_rows($artistas);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,6 +75,9 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
+                        <a href="#artistas">ARTISTAS</a>
+                    </li>
+                    <li class="page-scroll">
                         <a href="#portfolio">Noticias</a>
                     </li>
                     <li class="page-scroll">
@@ -107,6 +115,44 @@
             </div>
         </div>
     </header>
+
+
+    <!-- ARTISTAS Section -->
+    <section id="artistas">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>ARTISTAS</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <?php $i = 1; do { ?>
+                    <div class="col-sm-4 portfolio-item">
+                        <a href="#artistaModal<?php echo $i; ?>" class="portfolio-link" data-toggle="modal">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-newspaper-o fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="<?php #echo $row_artistas['fotografia']; ?>" class="img-responsive" alt="" width="900" height="600">
+                        </a>
+                        <p><?php echo $row_artistas['nombre']; ?></p>
+                        <p><?php #echo $row_artistas['fecha']; ?></p>
+                    </div>
+                <?php 
+                    $i++ ; 
+                } while ($row_artistas = mysql_fetch_assoc($artistas)); ?>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="#nuevoArtista" data-toggle="modal" class="btn btn-lg" style="background-color: #2c3e50;">
+                        <i class="fa fa-newspaper-o"></i> AGREGAR UN ARTISTA
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -317,8 +363,55 @@
                             </div>
                             <div id="nuevasuccess"></div>
                             <div class="row">
-                                <div class="form-group col-xs-12">
+                                <div class="form-group col-xs-12">11
                                     <button type="submit" class="btn btn-success btn-lg">Crear Noticia</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- nuevoArtista Section -->
+
+    <div class="portfolio-modal modal fade" id="nuevoArtista" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div id="nuevoArtistaFormClose" class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>NUEVO ARTISTA</h2>
+                        <hr class="star-primary">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <form name="sentMessage" id="nuevoArtistaForm" novalidate>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control" placeholder="Nombre" id="nombreArtista" required data-validation-required-message="Ingrese el nombre.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <!-- <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label></label>
+                                    <textarea rows="5" class="form-control" placeholder="Noticia" id="noticia" required data-validation-required-message="Ingrese la noticia"></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>-->
+                            <div id="nuevoArtistaSuccess"></div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <button type="submit" class="btn btn-success btn-lg">Crear Artista</button>
                                 </div>
                             </div>
                         </form>
@@ -428,6 +521,56 @@
     <?php
             $i++;
         } while ($row_noticias = mysql_fetch_assoc($noticias)); 
+    ?>
+
+    <!-- ArtistaS Modals -->
+    <?php
+          $query_artistas = "SELECT * FROM artista";
+          $artistas = mysql_query($query_artistas, $kpop) or die(mysql_error());
+          $row_artistas = mysql_fetch_assoc($artistas);
+          $totalRows_artistas = mysql_num_rows($artistas);
+
+        $i = 1;
+        do {
+            ?>
+            <div class="portfolio-modal modal fade" id="artistaModal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="modal-body">
+                                    <h2><?php echo $row_artistas['nombre']; ?></h2>
+                                    <hr class="star-primary">
+                                    <img src="<?php #echo $row_artistas['fotografia']; ?>" class="img-responsive img-centered" alt="" width="900" height="600">
+                                    <p><?php #echo $row_artistas['noticia']; ?></p>
+                                    <ul class="list-inline item-details">
+                                        <li>Usuario:
+                                            <strong><?php 
+                                                #echo $row_artistas['id_usuario'];
+                                             ?></strong>
+                                        </li>
+                                        <li>Fecha:
+                                            <strong><?php #echo $row_artistas['fecha']; ?></strong>
+                                        </li>
+                                    </ul>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    <?php
+            $i++;
+        } while ($row_artistas = mysql_fetch_assoc($artistas)); 
     ?>
 
     <!-- jQuery -->

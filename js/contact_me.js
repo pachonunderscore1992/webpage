@@ -188,6 +188,7 @@ $(function() {
                     $('#nuevaNoticiaForm').trigger("reset");
                     setTimeout(function() {
                         $('#nuevaNoticiaFormClose').click();
+                        location.reload();
                     }, 1000);
                 },
                 error: function() {
@@ -200,6 +201,69 @@ $(function() {
                     $('#nuevasuccess > .alert-danger').append('</div>');
                     //clear all fields
                     $('#nuevaNoticiaForm').trigger("reset");
+                },
+            })
+        },
+        filter: function() {
+            return $(this).is(":visible");
+        },
+    });
+
+    $("a[data-toggle=\"tab\"]").click(function(e) {
+        e.preventDefault();
+        $(this).tab("show");
+    });
+});
+
+
+$(function() {
+
+    $("#nuevoArtistaForm input").jqBootstrapValidation({
+        preventSubmit: true,
+        submitError: function($form, event, errors) {
+            // additional error messages or events
+        },
+        submitSuccess: function($form, event) {
+            // Prevent spam click and default submit behaviour
+            $("#btnSubmit").attr("disabled", true);
+            event.preventDefault();
+            
+            // get values from FORM
+            var nombre_artista = $("input#nombreArtista").val();
+            $.ajax({
+                url: "././nuevoartista.php",
+                type: "POST",
+                data: {
+                    nombre_artista: nombre_artista
+                },
+                cache: false,
+                success: function() {
+                    // Enable button & show success message
+                    $("#btnSubmit").attr("disabled", false);
+                    $('#nuevoArtistaSuccess').html("<div class='alert alert-success'>");
+                    $('#nuevoArtistaSuccess > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                        .append("</button>");
+                    $('#nuevoArtistaSuccess > .alert-success')
+                        .append("<strong>Artista Agregado. </strong>");
+                    $('#nuevoArtistaSuccess > .alert-success')
+                        .append('</div>');
+                    //clear all fields
+                    $('#nuevoArtistaForm').trigger("reset");
+                    setTimeout(function() {
+                        $('#nuevoArtistaFormClose').click();
+                        location.reload();
+                    }, 1000);
+                },
+                error: function() {
+                    console.log(':(');
+                    // Fail message
+                    $('#nuevoArtistaSuccess').html("<div class='alert alert-danger'>");
+                    $('#nuevoArtistaSuccess > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                        .append("</button>");
+                    $('#nuevoArtistaSuccess > .alert-danger').append("<strong>Artista no creado");
+                    $('#nuevoArtistaSuccess > .alert-danger').append('</div>');
+                    //clear all fields
+                    $('#nuevoArtistaForm').trigger("reset");
                 },
             })
         },

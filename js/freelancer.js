@@ -5,7 +5,7 @@
  */
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
-localStorage.removeItem('user');
+// localStorage.removeItem('user');
 
 $(function() {
     $('body').on('click', '.page-scroll a', function(event) {
@@ -79,8 +79,14 @@ var calendar = $("#calendario").calendar({
 
 
 var cerrarSesion = function() {
-    localStorage.removeItem('usuario');
+    localStorage.removeItem('user');
     // $('#cerrarSesion').addClass("hide");
     // $('#iniciarSesion').removeClass("hide");
     location.reload();
 };
+
+if(!!localStorage.getItem('user')) {
+    $('#iniciarSesion').addClass("hide");
+    $('#cerrarSesion').removeClass("hide");   
+    $('#registrarse').addClass("hide");
+}
