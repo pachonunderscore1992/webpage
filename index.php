@@ -18,6 +18,12 @@
   $row_artistas = mysql_fetch_assoc($artistas);
   $totalRows_artistas = mysql_num_rows($artistas);
 
+  $query_grupo = "SELECT * FROM grupo";
+  $grupos = mysql_query($query_grupo, $kpop) or die(mysql_error());
+  $row_grupos = mysql_fetch_assoc($grupos);
+  $totalRows_grupos = mysql_num_rows($grupos);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +81,9 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
+                        <a href="#grupos">GRUPOS</a>
+                    </li>
+                    <li class="page-scroll">
                         <a href="#artistas">ARTISTAS</a>
                     </li>
                     <li class="page-scroll">
@@ -115,6 +124,43 @@
             </div>
         </div>
     </header>
+
+    <!--grupos Section -->
+    <section id="grupos">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>GRUPOS</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <?php $i = 1; do { ?>
+                    <div class="col-sm-4 portfolio-item">
+                        <a href="#gruposModal<?php echo $i; ?>" class="portfolio-link" data-toggle="modal">
+                            <!-- <div class="caption">
+                                <div class="caption-content">
+                                    <i class="fa fa-newspaper-o fa-3x"></i>
+                                </div>
+                            </div> -->
+                            <img src="<?php echo $row_grupos['fotografia']; ?>" class="img-responsive" alt="" width="900" height="600">
+                        </a>
+                        <p><?php echo $row_grupos['nombre_grupo']; ?></p>
+                        <p><?php echo $row_grupos['caracteristicas']; ?></p>
+                    </div>
+                <?php 
+                    $i++;
+                } while ($row_grupos = mysql_fetch_assoc($grupos)); ?>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="#nuevoGrupo" data-toggle="modal" class="btn btn-lg" style="background-color: #2c3e50;">
+                        <i class="fa fa-newspaper-o"></i> AGREGAR UN GRUPO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- ARTISTAS Section -->
@@ -421,6 +467,54 @@
         </div>
     </div>
 
+        <!-- nuevoArtista Section -->
+
+    <div class="portfolio-modal modal fade" id="nuevoGrupo" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div id="nuevoGrupoFormClose" class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2>NUEVO GRUPO</h2>
+                        <hr class="star-primary">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <form action="nuevogrupo.php" method="post" enctype="multipart/form-data">
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control" placeholder="Nombre" name="nombre_grupo" id="nombre_grupo" required data-validation-required-message="Ingrese el nombre.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                             <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label></label>
+                                    <input type="file" id="foto_grupo" name="foto_grupo">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div id="nuevoGrupoSuccess"></div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <button type="submit" class="btn btn-success btn-lg">Crear Artista</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">
@@ -523,7 +617,7 @@
         } while ($row_noticias = mysql_fetch_assoc($noticias)); 
     ?>
 
-    <!-- ArtistaS Modals -->
+    <!-- Artistas Modals -->
     <?php
           $query_artistas = "SELECT * FROM artista";
           $artistas = mysql_query($query_artistas, $kpop) or die(mysql_error());
@@ -572,6 +666,58 @@
             $i++;
         } while ($row_artistas = mysql_fetch_assoc($artistas)); 
     ?>
+
+    <!-- grupos Modals -->
+    <?php
+          $query_grupo = "SELECT * FROM grupo";
+          $grupos = mysql_query($query_grupo, $kpop) or die(mysql_error());
+          $row_grupos = mysql_fetch_assoc($grupos);
+          $totalRows_grupos = mysql_num_rows($grupos);
+
+        $i = 1;
+        do {
+            ?>
+            <div class="portfolio-modal modal fade" id="gruposModal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal">
+                        <div class="lr">
+                            <div class="rl">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="modal-body">
+                                    <h2><?php echo $row_grupos['nombre_grupo']; ?></h2>
+                                    <hr class="star-primary">
+                                    <img src="<?php echo $row_grupos['fotografia']; ?>" class="img-responsive img-centered" alt="" width="900" height="600">
+                                    <p><?php #echo $row_artistas['noticia']; ?></p>
+                                    <ul class="list-inline item-details">
+                                        <li>Usuario:
+                                            <strong><?php 
+                                                #echo $row_artistas['id_usuario'];
+                                             ?></strong>
+                                        </li>
+                                        <li>Fecha:
+                                            <strong><?php #echo $row_artistas['fecha']; ?></strong>
+                                        </li>
+                                    </ul>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    <?php
+            $i++;
+        } while ($row_grupos = mysql_fetch_assoc($grupos)); 
+    ?>
+
+    
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
