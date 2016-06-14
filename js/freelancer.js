@@ -90,3 +90,117 @@ if(!!localStorage.getItem('user')) {
     $('#cerrarSesion').removeClass("hide");   
     $('#registrarse').addClass("hide");
 }
+
+var votarGrupo = function(btn, id_grupo) {
+    $.ajax({
+        url: ".././voto_grupo.php",
+        type: "POST",
+        data: {
+            id_usuario: localStorage.getItem('userId'),
+            id_grupo: id_grupo
+        },
+        cache: false,
+        success: function() {
+            location.reload();
+        },
+        error: function() {
+            location.reload();
+        }
+    })
+};
+
+var votarArtista = function(btn, id_artista) {
+    $.ajax({
+        url: ".././voto_artista.php",
+        type: "POST",
+        data: {
+            id_usuario: localStorage.getItem('userId'),
+            id_artista: id_artista
+        },
+        cache: false,
+        success: function() {
+            location.reload();
+        },
+        error: function() {
+            location.reload();
+        }
+    })
+};
+
+var votarCancion = function(btn, id_cancion) {
+    $.ajax({
+        url: ".././voto_cancion.php",
+        type: "POST",
+        data: {
+            id_usuario: localStorage.getItem('userId'),
+            id_cancion: id_cancion
+        },
+        cache: false,
+        success: function() {
+            location.reload();
+        },
+        error: function() {
+            location.reload();
+        }
+    })
+};
+
+var verVotosGrupos = function(id) {
+    var btn = document.getElementById(id);
+    $('#'+id).removeClass('disabled');
+    $.ajax({
+        url: ".././vervotosgrupos.php",
+        type: "POST",
+        data: {
+            id_usuario: localStorage.getItem('userId'),
+            id_grupo: id
+        },
+        cache: false,
+        success: function() {
+            btn.className = btn.className + ' active';
+        },
+        error: function() {
+
+        }
+    });
+};
+
+var verVotosArtistas = function(id) {
+    var btn = document.getElementById(id);
+    $('#'+id).removeClass('disabled');
+    $.ajax({
+        url: ".././vervotosartistas.php",
+        type: "POST",
+        data: {
+            id_usuario: localStorage.getItem('userId'),
+            id_artista: id
+        },
+        cache: false,
+        success: function() {
+            btn.className = btn.className + ' active';
+        },
+        error: function() {
+
+        }
+    });
+};
+
+var verVotosCanciones = function(btn_id, id) {
+    var btn = document.getElementById(btn_id);
+    $('#'+btn_id).removeClass('disabled');
+    $.ajax({
+        url: ".././vervotoscanciones.php",
+        type: "POST",
+        data: {
+            id_usuario: localStorage.getItem('userId'),
+            id_cancion: id
+        },
+        cache: false,
+        success: function() {
+            btn.className = btn.className + ' active';
+        },
+        error: function() {
+
+        }
+    });
+};

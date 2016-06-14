@@ -367,8 +367,6 @@ footer .footer-below {
     line-height: 45px;
 }
 
-.btn:focus,
-.btn:active,
 .btn.active {
     outline: 0;
 }

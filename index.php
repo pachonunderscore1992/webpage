@@ -242,7 +242,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>RANKING</h2>
+                    <h2><a href="ranking.php">RANKING</a></h2>
                     <hr class="star-light">
                 </div>
             </div>
@@ -457,7 +457,7 @@
                             <div id="nuevoArtistaSuccess"></div>
                             <div class="row">
                                 <div class="form-group col-xs-12">
-                                    <button type="submit" class="btn btn-success btn-lg">Crear Artista</button>
+                                    <button type="submit" class="btn btn-success btn-lg">Crear Grupo</button>
                                 </div>
                             </div>
                         </form>
